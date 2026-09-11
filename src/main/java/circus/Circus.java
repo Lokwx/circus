@@ -3,14 +3,14 @@ package circus;
 import circus.animal.Animal;
 import circus.animal.Duck;
 import circus.animal.Parrot;
-import circus.equipment.Cannon;
-import circus.equipment.Equipment;
-import circus.equipment.Ladder;
+import circus.stuff.Cannon;
+import circus.stuff.Equipment;
+import circus.stuff.Ladder;
 
 public class Circus {
     private static Animal[] animals = {
-            new Duck(),
-            new Parrot()
+            new Duck("Drake"),
+            new Parrot("Polly")
     };
     private static Equipment[] equipments = {
             new Ladder(50),
