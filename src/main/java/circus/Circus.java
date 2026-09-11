@@ -1,5 +1,6 @@
 package circus;
 
+import circus.animal.Tiger;
 import circus.animal.Animal;
 import circus.animal.Duck;
 import circus.animal.Parrot;
@@ -10,7 +11,8 @@ import circus.equipment.Ladder;
 public class Circus {
     private static Animal[] animals = {
             new Duck("Drake"),
-            new Parrot("Polly")
+            new Parrot("Polly"),
+            new Tiger("Tai Lung")
     };
     private static Equipment[] equipments = {
             new Ladder(50),
