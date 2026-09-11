@@ -1,11 +1,12 @@
 package circus;
 
-import circus.animal.Animal;
-import circus.animal.Duck;
-import circus.animal.Parrot;
+import circus.animal.*;
 import circus.equipment.Cannon;
 import circus.equipment.Equipment;
 import circus.equipment.Ladder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Circus {
     private static Animal[] animals = {
@@ -39,8 +40,52 @@ public class Circus {
     }
 
     public static void main(String[] args) {
-        makeAnimalsTalk();
-        System.out.println("Total value of animals " + calculateAssetValue(animals));
-        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+        System.out.println("Number of animals in the circus: " + animals.length);
+
+        ArrayList<Bird> birdArrayList = new ArrayList<>();
+        ArrayList<Integer> valueArrayList = new ArrayList<>();
+
+        System.out.println("Number of animals in the circus: " + animals.length);
+        ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
+        printAllAnimals(animalArrayList);
+
+        animalArrayList.add(new Elephant("StrongOne"));
+        System.out.println("Add a new elephant");
+        System.out.println("using AL, number of animals in the circus: " + animalArrayList.size());
+
+        Parrot andy = new Parrot("Andy");
+        animalArrayList.add(andy);
+        printAllAnimals(animalArrayList);
+        System.out.println("using AL, number of animals in the circus: " + animalArrayList.size());
+
+        System.out.println("Position of Andy in the AL is: " + animalArrayList.indexOf(andy));
+        Animal candidate = findAnimalReference(animalArrayList, "Polly");
+        System.out.println("Position of candidate is " + animalArrayList.indexOf((candidate)));
+
+        System.out.println("\n \n Before sorting animals by name: ");
+        printAllAnimals(animalArrayList);
+        animalArrayList.sort(Animal.animalNameComparator);
+
+        System.out.println("\n \n After sorting animals by name: ");
+        printAllAnimals(animalArrayList);
+
+//        makeAnimalsTalk();
+//        System.out.println("Total value of animals " + calculateAssetValue(animals));
+//        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+    }
+
+    private static void printAllAnimals(ArrayList<Animal> animals) {
+        for (Animal a : animals) {
+            System.out.println(a);
+        }
+    }
+
+    private static Animal findAnimalReference(ArrayList<Animal> animals, String nameOfAnimal) {
+        for (Animal a : animals) {
+            if (a.name.equals(nameOfAnimal)) {
+                return a;
+            }
+        }
+        return null;
     }
 }
